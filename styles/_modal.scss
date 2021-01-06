@@ -1,0 +1,155 @@
+.modal {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 150;
+  }
+  .form {
+    width: 500px;
+    max-width: 98%;
+    margin: 0 auto;
+    background: white;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-10%);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 2px 1px 10px 4px rgba(128, 128, 128, 0.267);
+
+    label {
+      margin-bottom: 0.3rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-color);
+    }
+    input {
+      margin-bottom: 2rem;
+      border-radius: 3px;
+      outline: none;
+      border: 1px solid rgb(230, 230, 230);
+      padding: 0.4rem 0.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    button {
+      background: var(--main-color);
+      color: white;
+      font-size: 1.2rem;
+      padding: 1rem;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      transition: filter 0.3s ease-in-out;
+      &:hover {
+        filter: brightness(1.1);
+      }
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+
+  &.closed {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes hover {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}
+
+.is-read {
+  padding: 0 0 2rem;
+  .toggle {
+    --width: 50px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .toggle-dark {
+    &:hover {
+      color: white;
+    }
+  }
+
+  .is-read-checkbox {
+    display: none;
+  }
+
+  .toggle__fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: rgb(184, 184, 184);
+    transition: filter 0.2s ease-in-out;
+    margin-left: 1rem;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+
+  .toggle__fill-dark {
+    background: var(--lime-green) !important;
+  }
+
+  .is-read-checkbox:checked ~ .toggle__fill {
+    background: var(--lime-green);
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+
+  .toggle__fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--height);
+    width: var(--height);
+    transform: scale(0.8);
+    background: rgb(223, 223, 223);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+  }
+
+  .is-read-checkbox:checked ~ .toggle__fill::after {
+    background: #fff !important;
+  }
+
+  .is-read-checkbox:checked ~ .toggle__fill::after {
+    transform: translateX(var(--height)) scale(0.8);
+  }
+}
