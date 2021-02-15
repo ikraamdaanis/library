@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Library</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/icon.png" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container">
+        <h1>The Web Library</h1>
+        <div class="buttons">
+          <div class="add">
+            <button id="addBook" style="display: none">Add a Book +</button>
+          </div>
+          <button id="signIn" style="display: none">Sign In</button>
+          <button id="signOut" style="display: none">Sign Out</button>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="library-container" id="libraryContainer">
+          <div class="bookItem"></div>
+        </div>
+      </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal closed">
+      <div class="overlay"></div>
+      <form class="form">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" required />
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required />
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" name="pages" required />
+        <div class="is-read">
+          <label class="toggle" for="isRead"
+            >Have you read the book?
+            <input
+              type="checkbox"
+              id="isRead"
+              name="isRead"
+              class="is-read-checkbox"
+            />
+            <span class="toggle__fill"></span>
+          </label>
+        </div>
+        <button type="submit">Add a Book</button>
+      </form>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: 'AIzaSyDJTgj9yEV7GH2lQxDCENC3XMP1KQfjvHg',
+        authDomain: 'library-e8a5b.firebaseapp.com',
+        projectId: 'library-e8a5b',
+        storageBucket: 'library-e8a5b.appspot.com',
+        messagingSenderId: '234876829643',
+        appId: '1:234876829643:web:b23b26602b69a68334c04e',
+      }
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig)
+      const db = firebase.firestore()
+    </script>
+    <script src="./scripts/helpers/stringToHTML.js"></script>
+    <script src="./scripts/helpers/bookContainer.js"></script>
+    <script src="./scripts/app.js"></script>
+  </body>
+</html>
